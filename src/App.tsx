@@ -9,10 +9,7 @@ function App() {
       <GridItem area="nav">
         <NavBar />
       </GridItem>
-      <Show
-        when={window.matchMedia("(min-width: 62em)").matches}
-        fallback={null}
-      >
+      <Show>
         <GridItem area="aside" bg="gold">
           Aside
         </GridItem>
