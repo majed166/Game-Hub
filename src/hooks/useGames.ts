@@ -14,6 +14,7 @@ export interface Game {
     name: string;
     background_image: string;
     parent_platforms: {platform:Platform}[]
+    metacritic: number;
   }
   interface FetchGamesReponse {
     count: number;
@@ -21,14 +22,15 @@ export interface Game {
   }
 const useGames =() => {
 
-    const [games, setGames] = useState<Game[]>([]);
+
+  const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
   useEffect(() => {
     const controller = new AbortController()
 
     apiClient
       .get<FetchGamesReponse>("/games", {signal:controller.signal})
-      .then((res) => setGames(res.data.results))
+      .then((res) => {setGames(res.data.results);})      
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message)});
