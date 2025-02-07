@@ -8,11 +8,8 @@ interface Props {
   game: Game;
 }
 const GameCard = ({ game }: Props) => {
-  console.log("GameCard received:", game); // Debugging output
-
-  if (!game) return <Text color="red">Error: No game data.</Text>;
   return (
-    <Card borderRadius={10} overflow={"hidden"}>
+    <Card width="300px" borderRadius={10} overflow="hidden">
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
